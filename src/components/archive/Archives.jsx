@@ -1,43 +1,38 @@
 import { Box, Grid } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import Form from "./Form";
-import Note from "./Note";
+import Archive from './Archive';
 
 import { DataContext } from "../../context/DataProvider";
 import { useContext } from "react";
-import EmptyNotes from "./EmptyNotes";
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
-const Notes = () => {
+const Archives = () => {
 
-  const { notes } = useContext(DataContext);
+  const { archiveNotes } = useContext(DataContext);
 
   return (
     <Box sx={{ display: 'flex', width: '100%' }}>
       <Box sx={{ p: 3, width: '100%' }}>
         <DrawerHeader />
-        <Form />
         {
-          notes.length > 0 ?
             <Grid container style={{marginTop: 16}}>
               {
-                notes.map(note => (
+                archiveNotes.map(archive => (
                   <Grid item>
-                    <Note note={note} />
+                    <Archive note={archive} />
                   </Grid>
 
                 ))
               }
             </Grid>
-            : <EmptyNotes />
         }
       </Box>
     </Box>
   )
 }
 
-export default Notes;
+export default Archives;
