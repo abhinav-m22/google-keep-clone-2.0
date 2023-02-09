@@ -4,6 +4,7 @@ import DeleteNote from './DeleteNote';
 
 import { DataContext } from "../../context/DataProvider";
 import { useContext } from "react";
+import EmptyDeleteNotes from "./EmptyDeleteNotes";
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
@@ -18,7 +19,9 @@ const DeleteNotes = () => {
     <Box sx={{ display: 'flex', width: '100%' }}>
       <Box sx={{ p: 3, width: '100%' }}>
         <DrawerHeader />
-            <Grid container style={{marginTop: 16}}>
+        {
+          deleteNotes.length > 0 ?
+            <Grid container style={{ marginTop: 16 }}>
               {
                 deleteNotes.map(note => (
                   <Grid item>
@@ -28,6 +31,9 @@ const DeleteNotes = () => {
                 ))
               }
             </Grid>
+            :
+            <EmptyDeleteNotes />
+        }
       </Box>
     </Box>
   )

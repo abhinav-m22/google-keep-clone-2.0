@@ -4,6 +4,7 @@ import Archive from './Archive';
 
 import { DataContext } from "../../context/DataProvider";
 import { useContext } from "react";
+import EmptyArchiveNotes from "./EmptyArchiveNotes";
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
@@ -19,7 +20,8 @@ const Archives = () => {
       <Box sx={{ p: 3, width: '100%' }}>
         <DrawerHeader />
         {
-            <Grid container style={{marginTop: 16}}>
+          archiveNotes.length > 0 ?
+            <Grid container style={{ marginTop: 16 }}>
               {
                 archiveNotes.map(archive => (
                   <Grid item>
@@ -29,6 +31,8 @@ const Archives = () => {
                 ))
               }
             </Grid>
+            :
+            <EmptyArchiveNotes />
         }
       </Box>
     </Box>

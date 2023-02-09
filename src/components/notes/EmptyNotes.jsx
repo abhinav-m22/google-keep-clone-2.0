@@ -21,8 +21,8 @@ const Container = styled(Box)`
 const EmptyNotes = () => {
     return (
         <Container>
-            <Light />
-            <Text>Notes you add appear here</Text>
+            <Light style={{color: '#202124', opacity: 0.1, marginBottom: 20}}/>
+            <Text style={{color: '#5f6368'}}>Notes you add appear here</Text>
         </Container>
     )
 }
